@@ -7,13 +7,13 @@ public class candyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //score is to be implemented
             Destroy(gameObject);
+            GameManager.instance.IncrementScore();
         }
 
         else if (collision.gameObject.tag == "Boundary")
         {
-            //lives is to be implemented
+            GameManager.instance.Lifecount();
             Destroy(gameObject);
         }
     }
