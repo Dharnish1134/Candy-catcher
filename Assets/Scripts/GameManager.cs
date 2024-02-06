@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public Text scoreText;
     private void Awake()
     {
         instance = this;
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
         if (!gameOver)
         {
             score++;
+            scoreText.text = score.ToString();
+
         }
     
     }
@@ -27,7 +31,6 @@ public class GameManager : MonoBehaviour
         lives--;
         if (lives == 0)
         {
-            Debug.Log("You're Dead | Your score is:"+score);
             gameOver = true;
             spawnManager.Instance.StopSpawning();
         }
