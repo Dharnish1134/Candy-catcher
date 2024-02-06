@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -7,12 +8,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Text scoreText;
+    public TextMeshProUGUI[] Text;
     private void Awake()
     {
         instance = this;
     }
-    public int score = 0,lives = 4;
+    public int score = 0,lives = 5;
     bool gameOver = false;
 
     public void IncrementScore()
@@ -20,19 +21,32 @@ public class GameManager : MonoBehaviour
         if (!gameOver)
         {
             score++;
-            scoreText.text = score.ToString();
+            Text[1].text = score.ToString();
 
         }
     
     }
-
+    
     public void Lifecount()
     {
-        lives--;
-        if (lives == 0)
+        if (lives > 0)
         {
-            gameOver = true;
-            spawnManager.Instance.StopSpawning();
+            lives--;
+            Text[0].text = lives.ToString();
         }
+        else {
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        spawnManager.Instance.StopSpawning();
+        Text[0].text = "0";
+    }
+
+    private void Start()
+    {
+        Text[0].text = lives.ToString();
     }
 }
