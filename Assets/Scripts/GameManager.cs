@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,5 +54,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Text[0].text = lives.ToString();
+    }
+
+    public void restart() 
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void menuLoader()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
