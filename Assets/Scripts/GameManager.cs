@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public TextMeshProUGUI[] Text;
+    public GameObject gameOverPanel;
     private void Awake()
     {
         instance = this;
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
         spawnManager.Instance.StopSpawning();
         Text[0].text = "0";
         gameOver = true;
+        gameOverPanel.SetActive(true);
+        Text[2].text = "Score:" + score.ToString();
         GameObject.Find("Player").GetComponent<PlayerController>().canMove = false;
     }
 
