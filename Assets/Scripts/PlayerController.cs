@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int moveSpeed = 0;
     [SerializeField] private float maxPos;
-    bool canMove = true;
+    public bool canMove = true;
 
     void Update()
     {

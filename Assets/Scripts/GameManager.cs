@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             lives--;
             Text[0].text = lives.ToString();
         }
-        else {
+        if(lives <= 0 ) {
             GameOver();
         }
     }
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         spawnManager.Instance.StopSpawning();
         Text[0].text = "0";
+        gameOver = true;
+        GameObject.Find("Player").GetComponent<PlayerController>().canMove = false;
     }
 
     private void Start()
